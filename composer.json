@@ -1,5 +1,5 @@
 {
-    "name": "emspay/ems-online-magento-2",
+    "name": "BohdanLeasoft/GPEMagento2",
     "description": "EMS Pay for Magento 2",
     "version": "1.0.5",
     "require": {
