@@ -1,132 +1,62 @@
-<?php
-/**
- * Copyright © Magmodules.eu. All rights reserved.
- * See COPYING.txt for license details.
- */
-declare(strict_types=1);
-
-namespace EMSPay\Payment\ViewModel\Checkout;
-
-use EMSPay\Payment\Api\Config\RepositoryInterface as ConfigRepository;
-use EMSPay\Payment\Model\Ems as EmsModel;
-use EMSPay\Payment\Model\Methods\Banktransfer;
-use EMSPay\Payment\Model\Methods\Ideal;
-use EMSPay\Payment\Model\Methods\KlarnaDirect;
-use Magento\Checkout\Model\Session;
-use Magento\Framework\View\Element\Block\ArgumentInterface;
-use Magento\Sales\Model\Order\Payment;
-
-/**
- * Success view model class
- */
-class Success implements ArgumentInterface
-{
-
-    const IDEAL_PROCESSING_MESSAGE = "Your order has been received. Thank you for your purchase!
-The payment with iDeal is still <strong>processing</strong>.
-You will receive the order email once the payment is successful.";
-    const SOFORT_PENDING_MESSAGE = "Your order has been received. Thank you for your purchase!
-The payment with iDeal is still <strong>processing</strong>.
-You will receive the order email once the payment is successful.";
-
-    /**
-     * @var Session
-     */
-    private $checkoutSession;
-
-    /**
-     * @var ConfigRepository
-     */
-    private $configRepository;
-
-    /**
-     * @var EmsModel
-     */
-    private $emsModel;
-
-    /**
-     * Success constructor.
-     *
-     * @param Session $checkoutSession
-     * @param ConfigRepository $configRepository
-     * @param EmsModel $emsModel
-     */
-    public function __construct(
-        Session $checkoutSession,
-        ConfigRepository $configRepository,
-        EmsModel $emsModel
-    ) {
-        $this->checkoutSession = $checkoutSession;
-        $this->configRepository = $configRepository;
-        $this->emsModel = $emsModel;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMailingAddress(): string
-    {
-        $order = $this->checkoutSession->getLastRealOrder();
-
-        /** @var Payment $payment */
-        $payment = $order->getPayment();
-
-        if ($payment->getMethod() == Banktransfer::METHOD_CODE) {
-            return $payment->getAdditionalInformation('mailing_address');
-        }
-
-        return '';
-    }
-
-    /**
-     * @return string
-     */
-    public function getThankYouMessage(): string
-    {
-        $transaction = null;
-        $order = $this->checkoutSession->getLastRealOrder();
-
-        /** @var Payment $payment */
-        $payment = $order->getPayment();
-        $paymentMethod = $payment->getMethod();
-        $transactionId = $order->getEmspayTransactionId();
-
-        if (!$transactionId || $paymentMethod == Banktransfer::METHOD_CODE) {
-            return '';
-        }
-
-        try {
-            $method = $order->getPayment()->getMethodInstance()->getCode();
-            $testApiKey = $this->configRepository->getTestKey((string)$method, (int)$order->getStoreId());
-            $client = $this->emsModel->loadGingerClient((int)$order->getStoreId(), $testApiKey);
-            $transaction = $client->getOrder($transactionId);
-        } catch (\Exception $e) {
-            $this->configRepository->addTolog('error', $e->getMessage());
-        }
-
-        if (!$transaction) {
-            return '';
-        }
-
-        $paymentStatus = $transaction['status'] ?? null;
-        if (($paymentStatus == 'processing') && ($paymentMethod == Ideal::METHOD_CODE)) {
-            $message = self::IDEAL_PROCESSING_MESSAGE;
-            return __($message)->render();
-        }
-        if (($paymentStatus == 'pending') && ($paymentMethod == KlarnaDirect::METHOD_CODE)) {
-            $message = self::SOFORT_PENDING_MESSAGE;
-            return __($message)->render();
-        }
-
-        return '';
-    }
-
-    /**
-     * @return string
-     */
-    public function getCompanyName(): string
-    {
-        $storeId = $this->configRepository->getCurrentStoreId();
-        return $this->configRepository->getCompanyName((int)$storeId);
-    }
-}
+As I walk through the valley of the shadow of death
+I take a look at my life and realize there's nothin' left
+'Cause I've been blastin' and laughin' so long that
+Even my momma thinks that my mind is gone
+But I ain't never crossed a man that didn't deserve it
+Me be treated like a punk, you know that's unheard of
+You better watch how you talkin' and where you walkin'
+Or you and your homies might be lined in chalk
+I really hate to trip, but I gotta loc
+As they croak, I see myself in the pistol smoke
+Fool, I'm the kinda G the little homies wanna be like
+On my knees in the night, sayin' prayers in the streetlight
+Been spendin' most their lives
+Livin' in a gangsta's paradise
+Been spendin' most their lives
+Livin' in a gangsta's paradise
+Keep spendin' most our lives
+Livin' in a gangsta's paradise
+Keep spendin' most our lives
+Livin' in a gangsta's paradise
+Look at the situation they got me facing
+I can't live a normal life, I was raised by the street
+So I gotta be down with the hood team
+Too much television watchin', got me chasing dreams
+I'm a educated fool with money on my mind
+Got my ten in my hand and a gleam in my eye
+I'm a loc'd out gangsta, set trippin' banger
+And my homies is down, so don't arouse my anger
+Fool, death ain't nothin' but a heart beat away
+I'm livin' life do or die, what can I say?
+I'm 23 now but will I live to see 24?
+The way things is going I don't know
+Tell me why are we so blind to see
+That the ones we hurt are you and me?
+Been spendin' most their lives
+Livin' in a gangsta's paradise
+Been spendin' most their lives
+Livin' in a gangsta's paradise
+Keep spendin' most our lives
+Livin' in a gangsta's paradise
+Keep spendin' most our lives
+Livin' in a gangsta's paradise
+Power and the money, money and the power
+Minute after minute, hour after hour
+Everybody's runnin', but half of them ain't lookin'
+It's going on in the kitchen, but I don't know what's cookin'
+They say I gotta learn, but nobody's here to teach me
+If they can't understand it, how can they reach me?
+I guess they can't, I guess they won't
+I guess they front, that's why I know my life is out of luck, fool
+Been spendin' most their lives
+Livin' in a gangsta's paradise
+Been spendin' most their lives
+Livin' in a gangsta's paradise
+Keep spendin' most our lives
+Livin' in a gangsta's paradise
+Keep spendin' most our lives
+Livin' in a gangsta's paradise
+Tell me why are we so blind to see
+That the ones we hurt are you and me?
+Tell me why are we so blind to see
+That the ones we hurt are you and me?
