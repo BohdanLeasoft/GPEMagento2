@@ -1,0 +1,15 @@
+<?php
+declare(strict_types=1);
+/**
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ * @var $block EMSPay\Payment\Block\Adminhtml\System\Config\Form\Apikey\Result
+ */
+?>
+<span id="result">
+    <img class="apikey_loading" hidden="hidden" style="margin:0 5px"
+         src="<?= $block->escapeUrl($block->getViewFileUrl('images/process_spinner.gif')) ?>"/>
+    <span id="apikey_result">
+    </span>
+</span>

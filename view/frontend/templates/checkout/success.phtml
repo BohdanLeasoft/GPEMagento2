@@ -1,0 +1,36 @@
+<?php
+/**
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/* @var \EMSPay\Payment\ViewModel\Success $viewModel */
+$viewModel = $block->getViewModel();
+
+?>
+<?php if ($mailingAddress = $viewModel->getMailingAddress()): ?>
+    <div class="emspay-payment-instuctions">
+        <?= $block->escapeHtml(__("Your order has been received. Thank you for your purchase!
+        We will dispatch your order as soon as possible. For any questions,
+        please contact our customer support.")); ?>
+        <br/>
+        <br/>
+        <b><?= $block->escapeHtml(__('Payment instructions:')) ?></b>
+        <br/>
+        <?= $block->escapeHtml(__('Please use the following data to make the banktransfer')) ?>
+        <br/>
+        <?= /* @noEscape */ nl2br(($block->escapeHtml($mailingAddress))) ?>
+        <br/>
+        <?= $block->escapeHtml(__('EMS processes the payments for')); ?>
+        <?= $block->escapeHtml($viewModel->getCompanyName()) ?>
+        <br/>
+        <br/>
+        <?= $block->escapeHtml(__("(!) Don't forget to use the reference in your payment.
+        Without the reference the processing of your payment can take more time!")); ?>
+    </div>
+<?php endif; ?>
+<?php if ($thankYouMessage = $viewModel->getThankYouMessage()): ?>
+    <div class="ems-thank-you-message">
+        <?= $block->escapeHtml($thankYouMessage); ?>
+    </div>
+<?php endif; ?>

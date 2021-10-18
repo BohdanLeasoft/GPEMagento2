@@ -1,0 +1,219 @@
+/*
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+.mm-heading-ems {
+    color: #666;
+    text-align: left;
+    border: 1px solid rgba(229, 229, 229, 0.27);
+    border-left: 2px solid #EA4C00;
+    font-size: 14px;
+    margin: 20px 0 0;
+    padding: 5px 5px 5px 10px;
+    background: #F8F8F8;
+}
+
+.mm-comment-ems {
+    padding: 10px 0px;
+    font-size: 12px;
+}
+
+.mm-block-ems {
+    background: #F8F8F8 no-repeat 8px;
+    border: 1px solid #E5E5E5;
+    border-left: 2px solid #EA4C00;
+    font-size: 12px;
+    color: #303030;
+    margin-bottom: 0;
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+    background-size: 55px;
+}
+
+.mm-block-ems table {
+    width: 520px !important;
+}
+
+.mm-block-ems strong {
+    font-weight: 600;
+    color: #514943;
+}
+
+.mm-block-ems p {
+    font-size: 12px;
+    padding: 0 0 0.3em;
+}
+
+.mm-block-ems tr a {
+    color: #6D6761;
+    margin-top: 3px;
+    display: block;
+}
+
+.mm-block-ems tr td {
+    padding: 5px 0px 0px 0px !important;
+    max-width: 85px;
+}
+
+.mm-block-ems .accordion .form-inline .config td {
+    padding: 0.8rem 1.5rem 0 0;
+}
+
+.mm-block-ems tr .signup a {
+    color: #04ADE4;
+    font-weight: bold;
+}
+
+.mm-block-ems .helpbutton {
+    padding: 10px 15px;
+    width: 100px;
+    height: 31px;
+    float: right;
+    background: url(../images/icons.png) no-repeat scroll 0px -175px #F8F8F8;
+}
+
+.mm-block-ems .icon1 {
+    background: url(../images/icons.png) no-repeat scroll -20px -14px;
+    width: 45px;
+    height: 25px;
+    float: left;
+}
+
+.mm-block-ems .icon2 {
+    background: url(../images/icons.png) no-repeat scroll -30px -70px;
+    width: 36px;
+    height: 25px;
+    float: left;
+}
+
+.mm-block-ems .icon3 {
+    background: url(../images/icons.png) no-repeat scroll -20px -129px;
+    width: 43px;
+    height: 25px;
+    float: left;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .mm-block-ems .icon1 {
+        background: url(../images/icons@x2.png) no-repeat scroll 0px -7px;
+        background-size: 55px;
+    }
+
+    .mm-block-ems .icon2 {
+        background: url(../images/icons@x2.png) no-repeat scroll -4px -32px;
+        background-size: 45px;
+    }
+
+    .mm-block-ems .icon3 {
+        background: url(../images/icons@x2.png) no-repeat scroll 0px -75px;
+        background-size: 52px;
+    }
+
+    .mm-block-ems .helpbutton {
+        background: url(../images/icons@x2.png) no-repeat scroll 0px -260px #F8F8F8;
+        background-size: 125px;
+    }
+}
+
+.mm-comment-hover .readmore {
+    cursor: help !important;
+    float: right;
+    margin-top: -35px;
+    border: 0;
+    background-color: transparent !important;
+    opacity: 1 !important;
+    color: #524A43 !important;
+    font-size: 12px;
+    text-align: right;
+    margin-right: 0px;
+    padding-right: 30px;
+}
+
+.mm-comment-hover:before {
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1;
+    color: #514943;
+    content: '\e633';
+    font-family: 'Admin Icons';
+    vertical-align: middle;
+    display: inline-block;
+    font-weight: 400;
+    overflow: hidden;
+    speak: none;
+    text-align: center;
+    float: right;
+    margin-top: -35px;
+    margin-right: 5px;
+}
+
+@media only screen and (max-width: 1070px) {
+    .mm-comment-hover .readmore {
+        width: 30px;
+        margin-right: 0px;
+        padding-right: 0px;
+    }
+
+    .mm-comment-hover:before {
+        display: none;
+    }
+}
+
+.mm-comment-hover #content {
+    display: none;
+    font-size: 12px;
+    line-height: 18px;
+    margin-left: 10px;
+}
+
+.mm-comment-hover input[type="text"] {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+    padding: 6px 12px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.mm-comment-hover input[type="text"]:focus {
+    outline: none;
+}
+
+.mm-comment-hover input:focus + div#content {
+    display: block;
+}
+
+.ems-success {
+    display: block;
+    line-height: 30px;
+}
+
+.ems-success:before {
+    font-family: 'Admin Icons';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    padding: 10px;
+    color: #79A22E;
+    content: '\e62d';
+}
+
+.ems-error {
+    display: block;
+    background-color: white;
+    line-height: 30px;
+}
+
+.ems-error:before {
+    color: #EB5202;
+    content: '\e623';
+    font-family: 'Admin Icons';
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    padding: 10px;
+}
+
+.test-key {
+    color: #EB5202;
+    font-weight: bold;
+}

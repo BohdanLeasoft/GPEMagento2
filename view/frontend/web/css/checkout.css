@@ -1,0 +1,12 @@
+/*
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+.paymentlogo {
+    display: inline-block;
+    width: 75px;
+    margin-left: 5px;
+    margin-right: 5px;
+    vertical-align: middle;
+}

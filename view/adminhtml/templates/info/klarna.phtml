@@ -1,0 +1,19 @@
+<?php
+/**
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+declare(strict_types=1);
+
+/**
+ * @var $block \EMSPay\Payment\Block\Info\Klarna
+ */
+?>
+<?= $block->escapeHtml($block->getMethod()->getTitle()) ?>
+<?php if ($block->getInfo()->getAdditionalInformation()): ?>
+    <?php if ($block->getTestModus()): ?>
+        <div class="ing-mailing-address test-key">
+            <?= /* @noEscape */ $block->escapeHtml(__('Processed using Test API-Key!')) ?>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

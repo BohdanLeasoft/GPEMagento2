@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright © Magmodules.eu. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <include path="EMSPay_Payment::methods/ideal.xml"/>
+    <include path="EMSPay_Payment::methods/creditcard.xml"/>
+    <include path="EMSPay_Payment::methods/applepay.xml"/>
+    <include path="EMSPay_Payment::methods/bancontact.xml"/>
+    <include path="EMSPay_Payment::methods/klarnadirect.xml"/>
+    <include path="EMSPay_Payment::methods/payconiq.xml"/>
+    <include path="EMSPay_Payment::methods/paypal.xml"/>
+    <include path="EMSPay_Payment::methods/amex.xml"/>
+    <include path="EMSPay_Payment::methods/klarna.xml"/>
+    <include path="EMSPay_Payment::methods/afterpay.xml"/>
+    <include path="EMSPay_Payment::methods/banktransfer.xml"/>
+    <include path="EMSPay_Payment::methods/tikkie.xml"/>
+</include>

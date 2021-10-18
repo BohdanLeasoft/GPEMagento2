@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © Magmodules.eu. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="EMSPay_Payment::css/success.css" />
+    </head>
+    <body>
+        <referenceContainer name="order.success.additional.info">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="ems.checkout.success"
+                   template="EMSPay_Payment::checkout/success.phtml" after="-">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">EMSPay\Payment\ViewModel\Checkout\Success</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © Magmodules.eu. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<payment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Payment:etc/payment.xsd">
+    <methods>
+        <method name="emspay_methods_ideal">
+            <allow_multiple_address>0</allow_multiple_address>
+        </method>
+        <method name="emspay_methods_creditcard">
+            <allow_multiple_address>0</allow_multiple_address>
+        </method>
+        <method name="emspay_methods_applepay">
+            <allow_multiple_address>0</allow_multiple_address>
+        </method>
+        <method name="emspay_methods_bancontact">
+            <allow_multiple_address>0</allow_multiple_address>
+        </method>
+        <method name="emspay_methods_banktransfer">
+            <allow_multiple_address>0</allow_multiple_address>
+        </method>
+        <method name="emspay_methods_klarnadirect">
+            <allow_multiple_address>0</allow_multiple_address>
+        </method>
+        <method name="emspay_methods_paypal">
+            <allow_multiple_address>0</allow_multiple_address>
+        </method>
+        <method name="emspay_methods_amex">
+            <allow_multiple_address>0</allow_multiple_address>
+        </method>
+        <method name="emspay_methods_klarna">
+            <allow_multiple_address>0</allow_multiple_address>
+        </method>
+        <method name="emspay_methods_payconiq">
+            <allow_multiple_address>0</allow_multiple_address>
+        </method>
+        <method name="emspay_methods_afterpay">
+            <allow_multiple_address>0</allow_multiple_address>
+        </method>
+        <method name="emspay_methods_tikie">
+            <allow_multiple_address>0</allow_multiple_address>
+        </method>
+    </methods>
+</payment>

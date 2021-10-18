@@ -1,0 +1,50 @@
+<?php
+/**
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+declare(strict_types=1);
+
+/**
+ * @see \EMSPay\Payment\Block\Adminhtml\System\Config\Form\Apikey\Button
+ * @var \EMSPay\Payment\Block\Adminhtml\System\Config\Form\Apikey\Button $block
+ */
+?>
+<script>
+    require([
+        'jquery',
+        'prototype'
+    ], function (jQuery) {
+        var resultSpan = jQuery('#result');
+        jQuery('#apikey_button').click(function () {
+            var params = {
+                "apikey": jQuery("input[name='groups[emspay][groups][emspay_general][fields][apikey][value]']").val(),
+            };
+            new Ajax.Request('<?= $block->escapeUrl($block->getAjaxUrl()) ?>', {
+                parameters: params,
+                loaderArea: false,
+                asynchronous: true,
+                onCreate: function () {
+                    resultSpan.find('.apikey_loading').show();
+                    resultSpan.find('#apikey_result').hide();
+                },
+                onSuccess: function (response) {
+                    console.log(response);
+                    resultSpan.find('.apikey_loading').hide();
+                    var resultText = '';
+                    if (response.status > 200) {
+                        resultText = response.statusText;
+                    } else {
+                        var json = response.responseJSON;
+                        if (typeof json.msg != 'undefined') {
+                            resultText = json.msg;
+                        }
+                    }
+                    resultSpan.find('#apikey_result').show();
+                    jQuery('#apikey_result').html(resultText);
+                }
+            });
+        });
+    });
+</script>
+<?= $block->getButtonHtml() ?>

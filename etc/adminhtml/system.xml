@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright © Magmodules.eu. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config:etc/system_file.xsd">
+	<system>
+		<section id="payment">
+			<group id="emspay" translate="label" type="text" sortOrder="101" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>EMSPay</label>
+				<group id="branding" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Branding</label>
+					<frontend_model>EMSPay\Payment\Block\Adminhtml\Render\Header</frontend_model>
+				</group>
+				<group id="emspay_general" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>General</label>
+					<field id="version" translate="label" type="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>Version</label>
+                        <config_path>payment/emspay_general/version</config_path>
+					</field>
+					<field id="enabled" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>Enabled</label>
+						<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+						<config_path>payment/emspay_general/enabled</config_path>
+					</field>
+					<field id="logos" translate="label" type="select" sortOrder="4" showInDefault="1"
+						   showInWebsite="1" showInStore="1">
+						<label>Show Payment Logo's</label>
+						<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+						<config_path>payment/ing_genera/payment_images</config_path>
+					</field>
+					<field id="heading_api" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>API Details</label>
+						<frontend_model>EMSPay\Payment\Block\Adminhtml\Render\Heading</frontend_model>
+						<comment><![CDATA[Fill in your API Key below.]]></comment>
+					</field>
+					<field id="apikey" translate="label" type="text" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="1">
+						<label>API Key</label>
+						<backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+						<config_path>payment/emspay_general/apikey</config_path>
+					</field>
+					<field id="apkikey_button" translate="label" type="button" sortOrder="14" showInDefault="1"
+						   showInWebsite="1" showInStore="1">
+						<frontend_model>EMSPay\Payment\Block\Adminhtml\System\Config\Form\Apikey\Button</frontend_model>
+					</field>
+					<field id="apkikey_result" translate="label" type="text" sortOrder="15" showInDefault="1"
+						   showInWebsite="1" showInStore="1">
+						<frontend_model>EMSPay\Payment\Block\Adminhtml\System\Config\Form\Apikey\Result</frontend_model>
+					</field>
+					<field id="heading_debug" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
+						<label>Debug</label>
+						<frontend_model>EMSPay\Payment\Block\Adminhtml\Render\Heading</frontend_model>
+						<comment><![CDATA[Especially for Developers you can enable the Debug mode.]]></comment>
+					</field>
+					<field id="debug" translate="label" type="select" sortOrder="81" showInDefault="1" showInWebsite="0" showInStore="0">
+						<label>Debug requests</label>
+						<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+						<config_path>payment/emspay_general/debug</config_path>
+						<comment>When activated the debug file will be located in: var/log/emspay/debug.log</comment>
+					</field>
+				</group>
+				<include path="EMSPay_Payment::methods.xml"/>
+			</group>
+		</section>
+	</system>
+</config>

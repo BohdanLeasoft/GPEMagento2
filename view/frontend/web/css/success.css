@@ -1,0 +1,14 @@
+/*
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+.emspay-payment-instuctions {
+    border: 1px dotted cornsilk;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.ems-thank-you-message {
+    margin-bottom: 15px;
+}
