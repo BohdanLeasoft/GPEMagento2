@@ -1,6 +1,6 @@
 #!/bin/bash
 DOMAIN=${1:-magento2.test}
-VERSION=${2:-2.2.6}
+VERSION=${2:-2.2.11}
 
 curl -s https://raw.githubusercontent.com/BohdanLeasoft/GPEMagento2/develop/template|bash -s - magento-2
 bin/download $VERSION
