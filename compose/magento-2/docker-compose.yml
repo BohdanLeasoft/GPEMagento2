@@ -16,18 +16,7 @@ services:
       - ./src:/var/www/html:delegated
       - ~/.composer:/var/www/.composer:delegated
       - appdata:/sock
-      - appdata:/var/www/html/app
-      - appdata:/var/www/html/bin
-      - appdata:/var/www/html/dev
-      - appdata:/var/www/html/generated
-      - appdata:/var/www/html/lib
-      - appdata:/var/www/html/phpserver
-      - appdata:/var/www/html/pub
-      - appdata:/var/www/html/setup
-      - appdata:/var/www/html/update
-      - appdata:/var/www/html/var
-      - appdata:/var/www/html/vendor
-
+      
   phpfpm:
     image: markoshust/magento-php:7.1-fpm-9
     links:
