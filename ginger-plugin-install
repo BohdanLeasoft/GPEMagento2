@@ -9,4 +9,7 @@ composer install
 
 cd ../../../
 
+rm -r vendor/
+rm composer.lock 
+rm composer.json 
 
