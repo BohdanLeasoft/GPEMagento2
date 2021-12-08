@@ -1,3 +1,18 @@
 #!/bin/bash
 
 composer require gingerpay/payment
+
+mkdir GingerPay
+cp -r vendor/gingerpay/payment GingerPay/Payment
+cd GingerPay/Payment/Library/
+composer install
+
+cd ../../../
+
+rm -r vendor/
+rm composer.lock 
+rm composer.json 
+
+cd ../../../
+
+bin/magento setup:upgrade
